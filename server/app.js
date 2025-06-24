@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
+const cors = require('cors')
 const routes = require('./routes/note.routes')
 
 const app = express()
 const port = process.env.PORT ?? 5001
 
+app.use(cors())
 app.use(express.json({ extended: true }))
 app.use('/api/note', routes)
 
