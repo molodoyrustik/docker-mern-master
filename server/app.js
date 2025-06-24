@@ -4,7 +4,7 @@ const path = require('path')
 const routes = require('./routes/note.routes')
 
 const app = express()
-const port = process.env.PORT ?? 5000
+const port = process.env.PORT ?? 5001
 
 app.use(express.json({ extended: true }))
 app.use('/api/note', routes)
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
 async function start() {
   try {
-    await mongoose.connect(`mongodb://localhost:27017/notes`, {
+    await mongoose.connect(`mongodb://host.docker.internal:27017/notes`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
