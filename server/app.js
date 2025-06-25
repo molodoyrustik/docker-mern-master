@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 
 async function start() {
   try {
-    await mongoose.connect(`mongodb://host.docker.internal:27017/notes`, {
+    await mongoose.connect(`mongodb://mongodb:27017/notes`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
