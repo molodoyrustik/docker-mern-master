@@ -8,6 +8,14 @@ mongo:
 		-v mongo-data:/data/db \
 		mongo
 
+frontend:
+	docker run -p 3000:3000 \
+		-d \
+		--rm \
+		--name notes-frontend \
+		-v /Users/ruslanbagautdinov/development/docker-mern-master/client/src:/app/src \
+		notes-frontend
+
 backend:
 	docker run -p 5001:5001 \
 		-d \
@@ -19,9 +27,8 @@ backend:
 		--env-file ./config/development.env \
 		notes-backend
 
-frontend:
-	docker run -p 3000:3000 \
-		-d \
-		--rm \
-		--name notes-frontend \
-		notes-frontend
+stop:
+	docker stop mongodb notes-frontend notes-backend
+
+dev:
+	docker-compose -f docker-compose.yml up -d
