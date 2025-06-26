@@ -3,7 +3,7 @@ import axios from 'axios'
 import {List} from './List'
 import {Form} from './Form'
 
-const baseURL = 'http://localhost:5001'
+const baseURL = process.env.NODE_ENV === 'production' ? 'http://localhost:5001' : 'http://localhost:5001'
 
 const api = axios.create({ baseURL })
 
