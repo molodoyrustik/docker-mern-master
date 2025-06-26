@@ -9,12 +9,14 @@ services:
     env_file:
       - ./config/development.env
   frontend:
+    image: "notes-frontend-dev"
     build: ./client
     ports:
       - "3000:3000"
     volumes:
       - ./client/src:/app/src
   backend:
+    image: "notes-backend-dev"
     build: ./server
     ports:
       - "5001:5001"
